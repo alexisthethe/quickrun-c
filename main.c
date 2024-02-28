@@ -6,6 +6,12 @@ Author:- Mishal Shah
 #include<string.h>
 #include <stdlib.h>
 #include <stdbool.h>
+
+#include "board.h"
+#include "rules.h"
+#include "decision.h"
+#include "checkforwin.h"
+
 #ifdef _WIN32
     #define OS "nt"
 #elif __unix__ || __APPLE__
@@ -14,9 +20,7 @@ Author:- Mishal Shah
 #define TRUE 1
 #define FALSE 0
 
-void board(char x, char o, unsigned char *u1, unsigned char *u2, char *a); // 2D Graphics on CLI
-void rules(); // Prints rule page on CLI
-int checkforwin(char *a); // Checks wether a player won
+
 bool decision(char *x, char *o, unsigned char *u1); // points player to mark X or mark 0
 int main()
 {
@@ -125,88 +129,4 @@ int main()
             getchar();
             break;
     }
-}
-int checkforwin(char *a)
-{
-    if(a[0]==a[1] && a[1]==a[2])
-        return 1;
-    else if(a[3]==a[4] && a[4]==a[5])
-        return 1;
-    else if(a[6]==a[7] && a[7]==a[8])
-        return 1;
-    else if(a[0]==a[3] && a[3]==a[6])
-        return 1;
-    else if(a[1]==a[4] && a[4]==a[7])
-        return 1;
-    else if(a[2]==a[5] && a[5]==a[8])
-        return 1;
-    else if(a[0]==a[4] && a[4]==a[8])
-        return 1;
-    else if(a[2]==a[4] && a[4]==a[6])
-        return 1;
-    else if(a[0]!='1' && a[1]!='2' && a[2]!='3' && a[3]!='4' && a[4]!='5' && a[5]!='6' && a[6]!='7' && a[7]!='8' && a[8]!='9')
-        return 0;
-    else
-        return -1;
-}
-
-void board(char x, char o, unsigned char *u1, unsigned char *u2, char *a)
-{
-    int i;
-    if (OS=="nt")
-        system("cls");
-    if (OS=="posix")
-        system("clear");
-    printf("\tTic-Tac-Toe\n\n");
-        printf("\n\n");
-        printf("%s:- (%c)\n%s:-  (%c)\n\n\n",u1,x,u2,o);
-
-        printf("  %c |  %c | %c\n",a[0],a[1],a[2]);
-        printf("    |    |    \n");
-        printf("----|----|----\n");
-        printf("    |    |    \n");
-        printf("  %c |  %c | %c\n",a[3],a[4],a[5]);
-        printf("    |    |    \n");
-        printf("----|----|----\n");
-        printf("  %c |  %c | %c\n",a[6],a[7],a[8]);
-        printf("    |    |    \n");
-    }
-void rules()
-{
-    char link;
-    printf("\tTic-Tac-Toe\n\n");
-    printf("Welcome to the most played 2D game and a sort of fun using X and O\n\n");
-    printf("Rules:-\n");
-    printf("\n1:Each player will be entering the number to put respective X or O in the desired position");
-    printf("\n2:Player who gets a combination of 3 same characters either diagonal or horizontally or \n  vertically will be declared as the winner");
-    printf("\n\nEnjoy the game! Be a Winner!\n\n");
-    printf("For more clarifications press Y else type any other character:- ");
-    scanf("%c",&link);
-    if(link=='y' || link=='Y')
-    {
-        if (OS=="nt")
-            system("start http://www.wikihow.com/Play-Tic-Tac-Toe");
-        if (OS=="posix")
-            system("firefox http://www.wikihow.com/Play-Tic-Tac-Toe");
-    }
-
-}
-bool decision(char *x, char *o, unsigned char *u1)
-{
-    char dec;
-    printf("\n\n");
-    do {
-        printf("Player1 %s choose the X or 0:",u1);
-        dec=getchar();
-        scanf("%c", &dec);
-    } while(dec!='X' && dec!='x' && dec!='0');
-    if (dec=='X' || dec=='x') {
-        *x='X';
-        *o='0';
-    }
-    else {
-        *x='0';
-        *o='X';
-    }
-    return 1;
 }

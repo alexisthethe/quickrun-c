@@ -1,3 +1,15 @@
+#include<stdio.h>
+#include<string.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+#include "board.h"
+
+#ifdef _WIN32
+    #define OS "nt"
+#elif __unix__ || __APPLE__
+    #define OS "posix"
+#endif 
 
 void board(char x, char o, unsigned char *u1, unsigned char *u2, char *a)
 {
