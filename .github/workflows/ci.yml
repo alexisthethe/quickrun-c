@@ -64,3 +64,13 @@ jobs:
       with:
         recreate: true
         path: code-coverage-results.md
+
+    - name: Add Coverage Badge to README
+      uses: schneegans/dynamic-badges-action@v1.7.0
+      with:
+        auth: ${{ secrets.GIST_SECRET }}
+        gistID: 1972d445c81ad0c051b7a598cd2e5d17
+        filename: quickrun-c_badges.json # Use test.svg if you want to use the SVG mode.
+        label: Hello
+        message: World
+        color: orange
