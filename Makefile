@@ -1,4 +1,5 @@
 CC		= gcc
+CXX		= g++
 INC_DIR	= ./core
 CFLAGS	= -g -Wall -I$(INC_DIR)
 RM		= rm -f
@@ -23,4 +24,5 @@ lint:
 	cpplint --recursive .
 
 test:
-	echo "unittest TODO"
+	$(CXX) -o unittest tests/main.c -I /usr/src/googletest/googletest/include/ -lgtest
+	./unittest

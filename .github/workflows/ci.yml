@@ -34,4 +34,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - run: make test
+    - name: Install gtest manually
+      run: sudo apt-get install libgtest-dev && cd /usr/src/googletest/ && sudo mkdir build && cd build && sudo cmake .. && sudo make && sudo make install
+    - run: make -B test
