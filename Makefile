@@ -17,12 +17,13 @@ TicTacToe: main.c
 	$(CC) $(CFLAGS) -o TicTacToe main.c core/*.c
 
 clean veryclean:
-	$(RM) TicTacToe hello
+	$(RM) TicTacToe hello *.o
 	$(RMDIR) *.dSYM
+	$(RM) *.gcda *.gcno
 
 lint:
 	cpplint --recursive .
 
 test:
-	$(CXX) -o unittest tests/main.c -I /usr/src/googletest/googletest/include/ -lgtest
-	./unittest
+	$(CXX) --coverage -O0 -o unittest.o tests/main.c core/*.c -I /usr/src/googletest/googletest/include/ -I$(INC_DIR) -lgtest
+	./unittest.o
