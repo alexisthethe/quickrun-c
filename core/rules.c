@@ -1,16 +1,15 @@
-#include<stdio.h>
-#include<string.h>
+#include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 #include <stdbool.h>
 
 #include "rules.h"
 
 #ifdef _WIN32
-    #define OS "nt"
+#define OS "nt"
 #elif __unix__ || __APPLE__
-    #define OS "posix"
-#endif 
-
+#define OS "posix"
+#endif
 
 void rules()
 {
@@ -22,12 +21,11 @@ void rules()
     printf("\n2:Player who gets a combination of 3 same characters either diagonal or horizontally or \n  vertically will be declared as the winner");
     printf("\n\nEnjoy the game! Be a Winner!\n\n");
     printf("For more clarifications press Y else type any other character:- ");
-    scanf("%c",&link);
-    if(link=='y' || link=='Y')
+    scanf("%c", &link);
+    if (link == 'y' || link == 'Y')
     {
         print_rules();
     }
-
 }
 
 void print_rules()

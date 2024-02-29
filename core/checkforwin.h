@@ -1,6 +1,6 @@
-#ifndef CHECKFORWIN_H_INCLUDED
-#define CHECKFORWIN_H_INCLUDED
+#ifndef CORE_CHECKFORWIN_H_
+#define CORE_CHECKFORWIN_H_
 
 int checkforwin(char *a); // Checks wether a player won
 
-#endif
+#endif // CORE_CHECKFORWIN_H_
