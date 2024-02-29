@@ -69,19 +69,16 @@ jobs:
       if: github.ref == 'refs/heads/main'
       run: |
         BADGE_LINK=$(grep "Code Coverage" code-coverage-results.md | cut -d '(' -f 2 | cut -d ')' -f 1)
-        code=$(grep "Code Coverage" code-coverage-results.md | cut -d '(' -f 2 | cut -d ')' -f 1 | rev | cut -d '/' -f1 | rev | cut -d "?" -f1)
-        COVERAGE_PERCENT=$(echo $code | cut -d "-" -f2 | cut -d "%" -f 1)
-        echo "COVERAGE_PERCENT=$COVERAGE_PERCENT" >> $GITHUB_ENV
+        wget $BADGE_LINK -O coverage_badge.svg
+        echo "BADGE_SVG=$(cat coverage_badge.svg)" >> $GITHUB_ENV
 
-    - name: Create the Badge
-      uses: schneegans/dynamic-badges-action@v1.7.0
+    - name: Update Badge Gist
+      uses: gorgbus/gist-actions@main
       if: github.ref == 'refs/heads/main'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GIST_SECRET }}
       with:
-        auth: ${{ secrets.GIST_SECRET }}
-        gistID: 1972d445c81ad0c051b7a598cd2e5d17
-        filename: quickrun-c_badges.json
-        label: coverage
-        message: ${{ env.COVERAGE_PERCENT }}%
-        valColorRange: ${{ env.COVERAGE_PERCENT }}
-        maxColorRange: 100
-        minColorRange: 0
+        action: update
+        gist_id: 1972d445c81ad0c051b7a598cd2e5d17
+        file_name: quickrun-c_badges.svg
+        content: ${{ env.BADGE_SVG }}
