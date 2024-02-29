@@ -54,6 +54,7 @@ dkms.conf
 # gcov files
 *.gcda
 *.gcno
+*.info
 
 # App files
 score.txt
