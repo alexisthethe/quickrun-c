@@ -68,7 +68,7 @@ jobs:
     - name: Download badge
       if: github.ref == 'refs/heads/main'
       run: |
-        BADGE_LINK=$(grep "Code Coverage" test.md | cut -d '(' -f 2 | cut -d ')' -f 1)
+        BADGE_LINK=$(grep "Code Coverage" code-coverage-results.md | cut -d '(' -f 2 | cut -d ')' -f 1)
         wget $BADGE_LINK -o coverage_badge.svg
         BADGE_SVG=$(cat coverage_badge.svg)
 
