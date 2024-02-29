@@ -83,5 +83,5 @@ jobs:
       with:
         action: update
         gist_id: 1972d445c81ad0c051b7a598cd2e5d17
-        file_name: quickrun-c_badges.json
+        file_name: quickrun-c_badges.svg
         content: ${{ env.BADGE_SVG }}
