@@ -70,7 +70,7 @@ jobs:
       run: |
         BADGE_LINK=$(grep "Code Coverage" code-coverage-results.md | cut -d '(' -f 2 | cut -d ')' -f 1)
         wget $BADGE_LINK -o coverage_badge.svg
-        BADGE_SVG=$(cat coverage_badge.svg)
+        echo "BADGE_SVG=$(cat coverage_badge.svg)" >> $GITHUB_ENV
 
     - run: echo ${{ env.BADGE_SVG }}
       if: github.ref == 'refs/heads/main'
