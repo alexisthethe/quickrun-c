@@ -72,6 +72,9 @@ jobs:
         wget $BADGE_LINK -o coverage_badge.svg
         BADGE_SVG=$(cat coverage_badge.svg)
 
+    - run: echo ${{ env.BADGE_SVG }}
+      if: github.ref == 'refs/heads/main'
+
     - name: Update Badge Gist
       uses: gorgbus/gist-actions@main
       if: github.ref == 'refs/heads/main'
