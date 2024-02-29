@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "board.h": "c",
+        "rules.h": "c",
+        "decision.h": "c",
+        "checkforwin.h": "c"
+    }
+}

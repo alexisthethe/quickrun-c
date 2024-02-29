@@ -1,6 +1,6 @@
-#ifndef DECISION_H_INCLUDED
-#define DECISION_H_INCLUDED
+#ifndef CORE_DECISION_H_
+#define CORE_DECISION_H_
 
 bool decision(char *x, char *o, unsigned char *u1);
 
-#endif
+#endif // CORE_DECISION_H_
