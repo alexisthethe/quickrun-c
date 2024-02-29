@@ -18,3 +18,9 @@ TicTacToe: main.c
 clean veryclean:
 	$(RM) TicTacToe hello
 	$(RMDIR) *.dSYM
+
+lint:
+	cpplint --recursive .
+
+test:
+	echo "unittest TODO"
